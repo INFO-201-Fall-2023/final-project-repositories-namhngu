@@ -38,12 +38,12 @@ Columns: 6
 * Companies that have pivoted into the remote environment early in the pandemic have reaped many rewards, catering to the new social distancing demands
 
 [Tracking the COVID-19 Economy’s Effects on Food, Housing, and Employment Hardships](https://www.cbpp.org/research/poverty-and-inequality/tracking-the-covid-19-economys-effects-on-food-housing-and#:~:text=The%20majority%20of%20jobs%20lost,to%20Labor%20Department%20employment%20data.)  
-* Something
-* Something  
+* A large portion of jobs displaced due to the pandemic had lower wages, whereas high wage jobs were barely affected (national average)
+* Generally, traditionally red states have been the most affected in the following areas: food acquisition difficulty, being caught up on rent, covering household expenses, and employment
 
 [COVID-19 Policy Differences across US States: Shutdowns, Reopening, and Mask Mandates](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7766317/)  
-* Something
-* Something  
+* A rise in daily cases have pushed states to impose border restrictions or shutdowns but has no effect on decisions to enforce a mask mandate, let it be noted that mask mandates were statistically more effective in reducing cases than state border shutdowns
+* Reopening borders was a response to the rise in unemployment whereas mask mandates, mask mandate implementations had a correlation with the political alignment of states
 
 [Tourism-dependent economies are among those harmed the most by the pandemic](https://www.imf.org/en/Publications/fandd/issues/2020/12/impact-of-the-pandemic-on-tourism-behsudi)  
 * Something
