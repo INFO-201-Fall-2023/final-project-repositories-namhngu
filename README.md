@@ -34,8 +34,8 @@ Columns: 6
 * Something  
 
 [Businesses Must Accept ‘COVID-stasis’ and Adapt for the Future of Work](https://www.usnews.com/opinion/articles/2023-03-28/businesses-must-accept-covid-stasis-and-adapt-for-the-future-of-work)  
-* Something
-* Something  
+* Human behavior is resistant to change, once people were forced to work remotely, reverting back to a primarily in person work environment became very difficult, companies that betted against this are suffering now
+* Companies that have pivoted into the remote environment early in the pandemic have reaped many rewards, catering to the new social distancing demands
 
 [Tracking the COVID-19 Economy’s Effects on Food, Housing, and Employment Hardships](https://www.cbpp.org/research/poverty-and-inequality/tracking-the-covid-19-economys-effects-on-food-housing-and#:~:text=The%20majority%20of%20jobs%20lost,to%20Labor%20Department%20employment%20data.)  
 * Something
