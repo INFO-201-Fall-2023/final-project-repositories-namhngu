@@ -34,17 +34,17 @@ Columns: 6
 * Any policies that help sustain businesses during the economic shutdown have a very high return for the economy  
 
 [Businesses Must Accept ‘COVID-stasis’ and Adapt for the Future of Work](https://www.usnews.com/opinion/articles/2023-03-28/businesses-must-accept-covid-stasis-and-adapt-for-the-future-of-work)  
-* Human behavior is resistant to change, once people were forced to work remotely, reverting back to a primarily in person work environment became very difficult, companies that betted against this are suffering now
-* Companies that have pivoted into the remote environment early in the pandemic have reaped many rewards, catering to the new social distancing demands
+* Human behavior is resistant to change, once people were forced to work remotely, reverting back to a primarily in person work environment became very difficult, companies that betted against this are suffering now. Small businesses don't benefit from the shift to online work. 
+* Companies that have pivoted into the remote environment early in the pandemic have reaped many rewards, catering to the new social distancing demands. Article focused primarily on bigger companies while we will observe the changes to small businesses
 
 [Tracking the COVID-19 Economy’s Effects on Food, Housing, and Employment Hardships](https://www.cbpp.org/research/poverty-and-inequality/tracking-the-covid-19-economys-effects-on-food-housing-and#:~:text=The%20majority%20of%20jobs%20lost,to%20Labor%20Department%20employment%20data.)  
-* A large portion of jobs displaced due to the pandemic had lower wages, whereas high wage jobs were barely affected (national average)
-* Generally, traditionally red states have been the most affected in the following areas: food acquisition difficulty, being caught up on rent, covering household expenses, and employment
+* A large portion of jobs displaced due to the pandemic had lower wages, whereas high wage jobs were barely affected (national average). 
+* Generally, traditionally red states have been the most affected in the following areas: food acquisition difficulty, being caught up on rent, covering household expenses, and employment. We will look specifically into right-leaning sreas of Washington to see how small businesses fared instead of individuals
 
 [COVID-19 Policy Differences across US States: Shutdowns, Reopening, and Mask Mandates](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7766317/)  
 * A rise in daily cases have pushed states to impose border restrictions or shutdowns but has no effect on decisions to enforce a mask mandate, let it be noted that mask mandates were statistically more effective in reducing cases than state border shutdowns
-* Reopening borders was a response to the rise in unemployment whereas mask mandate implementations had a correlation with the political alignment of states
+* Reopening borders was a response to the rise in unemployment whereas mask mandate implementations had a correlation with the political alignment of states. These differing policies affected their small businesses accordingly. We will observe the implications of policies rather than the policies themselves. 
 
 [Tourism-dependent economies are among those harmed the most by the pandemic](https://www.imf.org/en/Publications/fandd/issues/2020/12/impact-of-the-pandemic-on-tourism-behsudi)  
-* The restriction on travel due to the pandemic has severely impacted the tourism industry in many countries
+* The restriction on travel due to the pandemic has severely impacted the tourism industry in many countries. This reduced the tourism in many big cities like Seattle, hurting the small businesses there
 * The crisis in the tourism industry and travel and hospitality sectors has driven less developed countries to invest more into different areas of their economy   
