@@ -30,8 +30,8 @@ Columns: 6
 
 ## Background Research
 [The impact of COVID-19 on small business outcomes and expectations](https://www.pnas.org/doi/10.1073/pnas.2006991117#:~:text=Across%20the%20full%20sample%2C%2043,being%20less%20of%20a%20factor.)  
-* Something
-* Something  
+* Small businesses account for 50% of all employment in the US, yet they have been having the hardest time during the pandemic
+* Any policies that help sustain businesses during the economic shutdown have a very high return for the economy  
 
 [Businesses Must Accept ‘COVID-stasis’ and Adapt for the Future of Work](https://www.usnews.com/opinion/articles/2023-03-28/businesses-must-accept-covid-stasis-and-adapt-for-the-future-of-work)  
 * Human behavior is resistant to change, once people were forced to work remotely, reverting back to a primarily in person work environment became very difficult, companies that betted against this are suffering now
@@ -46,5 +46,5 @@ Columns: 6
 * Reopening borders was a response to the rise in unemployment whereas mask mandates, mask mandate implementations had a correlation with the political alignment of states
 
 [Tourism-dependent economies are among those harmed the most by the pandemic](https://www.imf.org/en/Publications/fandd/issues/2020/12/impact-of-the-pandemic-on-tourism-behsudi)  
-* Something
-* Something   
+* The restriction on travel due to the pandemic has severely impacted the tourism industry in many countries
+* The crisis in the tourism industry and travel and hospitality sectors has driven less developed countries to invest more into different areas of their economy   
