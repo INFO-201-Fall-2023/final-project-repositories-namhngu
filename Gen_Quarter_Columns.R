@@ -26,3 +26,4 @@ for (i in 1:nrow(vaccines_df)) {
 
 vaccines_df$Year <- year_vaccines
 vaccines_df$Quarter <- quarter_vaccines
+
