@@ -13,8 +13,8 @@ createYearQuarterColumnsRev <- function(rev_df) {
   
   for (i in 1:nrow(rev_df)) {
     date <- strsplit(rev_df$Year[i], " +")[[1]]
-    Year <- append(Year, date[1])
-    Quarter <- append(Quarter, date[3])
+    Year <- append(Year, as.numeric(date[1]))
+    Quarter <- append(Quarter, as.numeric(date[3]))
   }
   
   rev_df$year_num <- Year
@@ -27,7 +27,7 @@ createYearQuarterColumnsVac <- function(vaccines_df) {
   quarter_vaccines <- c()
   for (i in 1:nrow(vaccines_df)) {
     date <- strsplit(vaccines_df$Date[i], "/")[[1]]
-    year_vaccines <- append(year_vaccines, date[3])
+    year_vaccines <- append(year_vaccines, as.numeric(date[3]))
     date[1] <- str_remove(date[1], "^0+") 
     quarter_vaccines <- append(quarter_vaccines,ceiling(strtoi(date[1])/3))
   }
@@ -75,13 +75,26 @@ for (i in 1:nrow(r_df)) {
   r_df$Num_Units[i] <- as.numeric(str_remove_all(r_df$Units[i], ","))
 }
 
-#Removes some columns that aren't used in our analysis
+#Removes some rows/columns that aren't used in our analysis
 r_df <- select(r_df, Year, year_num, quarter_num, City, County, Sales, Num_Units)
+r_df <- r_df[!(str_detect(r_df$Year, "Annual")) & r_df$year_num >= 2019,]
 
 v_df <- group_by(v_df, Year, Quarter, Recip_County)
 v_df <- summarise_all(v_df, max)
 
-unified_df <- merge(x = r_df, y = v_df, by.x = c("year_num", "quarter_num", "County"), by.y = c("Year", "Quarter", "Recip_County"))
+#Joining Data
+unified_df <- left_join(r_df, v_df, by=c('year_num'='Year', 'quarter_num'='Quarter', 'County' = 'Recip_County'))
+
+#Final clean
+index <- which(is.na(unified_df), arr.ind = TRUE)
+naRowIndex <- index[,1]
+naColumnIndex <- index[,2]
+for (i in 1:length(naRowIndex)) {
+  unified_df[naRowIndex[i], naColumnIndex[i]] <- 0
+}
+for (i in 1:nrow(unified_df)) {
+  unified_df$Census2019[i] <- as.numeric(unlist(unique(unified_df[unified_df$County == unified_df$County[i] & unified_df$Census2019 != 0, 'Census2019'])))
+}
 
 unified_df <- arrange(unified_df, City, year_num, quarter_num)
 
@@ -102,8 +115,6 @@ for (i in 1:nrow(unified_df)) {
   }
 }
 
-#Final clean
-na.omit(unified_df)
 
 #Summarization table
 counties <- group_by(unified_df, County, year_num, quarter_num, Census2019)
