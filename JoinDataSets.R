@@ -77,10 +77,11 @@ for (i in 1:nrow(r_df)) {
 
 #Removes some rows/columns that aren't used in our analysis
 r_df <- select(r_df, Year, year_num, quarter_num, City, County, Sales, Num_Units)
-r_df <- r_df[!(str_detect(r_df$Year, "Annual")) & r_df$year_num >= 2019,]
+r_df <- r_df[!(str_detect(r_df$Year, "Annual")) & r_df$year_num >= 2017,]
 
 v_df <- group_by(v_df, Year, Quarter, Recip_County)
 v_df <- summarise_all(v_df, max)
+
 
 #Joining Data
 unified_df <- left_join(r_df, v_df, by=c('year_num'='Year', 'quarter_num'='Quarter', 'County' = 'Recip_County'))
@@ -96,9 +97,10 @@ for (i in 1:nrow(unified_df)) {
   unified_df$Census2019[i] <- as.numeric(unlist(unique(unified_df[unified_df$County == unified_df$County[i] & unified_df$Census2019 != 0, 'Census2019'])))
 }
 
-unified_df <- arrange(unified_df, City, year_num, quarter_num)
+unified_df <- arrange(unified_df, County, City, year_num, quarter_num)
 
-#Added new numeric column
+
+#Added new numeric column 
 for (i in 1:nrow(unified_df)) {
   county = unified_df$County[i]
   year = unified_df$year_num[i]
@@ -117,7 +119,12 @@ for (i in 1:nrow(unified_df)) {
 
 
 #Summarization table
-counties <- group_by(unified_df, County, year_num, quarter_num, Census2019)
-counties <- summarize(counties, sum(Sales), sum(Num_Units), mean(Completeness_pct), mean(Administered_Dose1_Pop_Pct), mean(Series_Complete_Pop_Pct), mean(Booster_Doses_Vax_Pct))
+counties <- group_by(unified_df, County, year_num, quarter_num, Completeness_pct, Administered_Dose1_Recip,Administered_Dose1_Pop_Pct,Series_Complete_Yes,Series_Complete_Pop_Pct,Booster_Doses,Booster_Doses_Vax_Pct,Series_Complete_Pop_Pct_SVI,Booster_Doses_Vax_Pct_SVI,Census2019)
+counties <- summarize(counties, Sales = sum(Sales), Num_Units = sum(Num_Units))
 
+arrange(counties, County, year_num, quarter_num)
+
+
+
+write.csv(counties, "unifiedCounties.csv", row.names = FALSE)
 write.csv(unified_df, "unified.csv", row.names = FALSE)
