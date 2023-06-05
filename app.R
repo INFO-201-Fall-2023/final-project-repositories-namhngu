@@ -228,16 +228,10 @@ server <- function(input, output) {
   output$pop_pop_plot <- renderPlot(getPopPieChart(unified_df, input$pop_input_bucket, input$pop_input_year, input$pop_input_quarter));
   output$pop_vac_plot <- renderPlot(getVaccinationPieChart(unified_df, input$pop_input_bucket, input$pop_input_year, input$pop_input_quarter));
   output$pop_sales_plot <- renderPlot(getSalesPieChart(unified_df, input$pop_input_bucket, input$pop_input_year, input$pop_input_quarter));
-<<<<<<< Updated upstream
-  output$vax_plot <- renderPlot(ggplot(df, aes(color = factor(year_num))) + geom_point(aes(x = Series_Complete_Pop_Pct, y = Sales))+
-  facet_grid(.~quarter_num, scales = "fixed")+labs(x = "Complete Vaccination Percentage", y = "Income")+
-  scale_color_discrete(name = "Year"));
-=======
   
   output$vax_plot <- renderPlotly({
     get_scatterplot(input$vax_input_year, input$vax_input_quarter)
   })
->>>>>>> Stashed changes
 }
   
 shinyApp(ui = ui, server = server)
