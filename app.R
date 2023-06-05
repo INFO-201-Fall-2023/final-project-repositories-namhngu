@@ -7,7 +7,7 @@ library(shinythemes)
 library(shinydashboard)
 
 unified_df <- read.csv("unifiedCounties.csv")
-
+source("GetPercDiff.R")
 
 ui <- fluidPage(
   theme = shinytheme("sandstone"),
@@ -44,30 +44,22 @@ ui <- fluidPage(
                       br(),
                       selectInput(
                         inputId = "rev_input_counties",
-                        label = "Select counties to display:",
+                        label = "Select county to display:",
                         choices = unique(unified_df$County),
-                        multiple = TRUE
+                        multiple = FALSE
+                      ),
+                      actionButton(
+                        inputId = "rev_bar",
+                        label = "Click to see total sales every quarter"
                       ),
                       br(),
-                      sliderInput(
-                        "rev_input_years",
-                        label = "Select years to display:",
-                        min = min(unified_df$year_num),
-                        max = max(unified_df$year_num),
-                        value = c(min(unified_df$year_num),max(unified_df$year_num)),
-                        step = 1,
-                        sep = ""
-                      )
                     ),
                     mainPanel(
+    
                       h3("Change in Revenue Over Time"),
                       plotlyOutput(outputId = "rev_plot")
                     )
                 ),
-                p("Let's examine the fight songs from 65 different universities across the US 
-                (i.e. all those in the Power Five conferences (the ACC, Big Ten, Big 12, Pac-12 and SEC), plus Notre Dame). 
-                Our analysis looks at how many times certain words appear in the lyrics to see how each song compares. 
-                We also look at song length and speed of each song based on the official versions availible on spotify")
              ),
              tabPanel("Correlation of Vaccinations and Revenue",
                   br(),
@@ -140,7 +132,18 @@ ui <- fluidPage(
 
   
 server <- function(input, output) {
+  observeEvent(input$rev_input_counties, {
+    output$rev_plot <- renderPlotly({
+      county <- input$rev_input_counties
+      plot_perc_diff(county)
+    })
+  })
   
+  observeEvent(input$rev_bar, {
+    output$rev_plot <- renderPlotly({
+      get_revenue_graph()
+    })
+  })
 }
   
 shinyApp(ui = ui, server = server)
