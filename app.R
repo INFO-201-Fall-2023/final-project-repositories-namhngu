@@ -11,6 +11,7 @@ source("GetPercDiff.R")
 source("pieCharts.R")
 source("Vaccination vs Sales Info 201.R")
 options(scipen = 999)
+source("scatter.R")
 
 ui <- fluidPage(
   theme = shinytheme("sandstone"),
@@ -77,7 +78,7 @@ ui <- fluidPage(
                 br(),
                 sidebarLayout(
                     sidebarPanel(
-                      h3("Sales Inputs"),
+                      h3("County Inputs"),
                       br(),
                       selectInput(
                         inputId = "rev_input_counties",
@@ -108,26 +109,27 @@ ui <- fluidPage(
                   br(),
                   sidebarLayout(
                     sidebarPanel(
-                      h3("Vaccine and Time Inputs"),
-                      br(),
-                      numericInput("vax_input_bucket", 
-                                   "Select vaccination % bucket size", 
-                                   value = 0, 
-                                   min = 0, 
-                                   max = 100),
+                      h3("Time Inputs"),
                       br(),
                       radioButtons("vax_input_year", 
                                    "Select a year:", 
-                                   choices = unique(unified_df$year_num)),
+                                   choices = c(2021, 2022)),
                       br(),
                       radioButtons("vax_input_quarter", 
                                    "Select a quarter:", 
                                    choices = unique(unified_df$quarter_num)),
                       br(),
-                      p("Let's examine the fight songs from 65 different universities across the US 
-                      (i.e. all those in the Power Five conferences (the ACC, Big Ten, Big 12, Pac-12 and SEC), plus Notre Dame). 
-                      Our analysis looks at how many times certain words appear in the lyrics to see how each song compares. 
-                      We also look at song length and speed of each song based on the official versions availible on spotify")
+                      p("In this graph we attempt to observe a correlation between the vaccination. We are attempting to observe if the increase in COVID-19 weariness 
+                        across counties affected the income increase/decrease caused by COVID-19 during that year. If we see the points increase as we move 
+                        to the right of the graph, we could say there is a possible positive correlation between COVID-19 weariness and income. 
+                        If we see the points decrease as we move to the right of the graph, we could say there is a possible negative correlation 
+                        between COVID-19 weariness and income. If the points are somewhat even, there might not be a correlation at all. This will lead 
+                        to our conclusions about the dataset and how different levels COVID-19 weariness could’ve translated into differing income 
+                        of retailers during the pandemic. "),
+                      p("In this case, we can see a slight positive correlation in some of the quarters but mostly no correlation. HOWEVER, do notice that as we
+                        move further in time the points do increase in variation, distancing themselves from eachother. This could possible mean a deviation from 
+                        highly COVID-19 weary counties and not COVID-19 weary counties. It is possible that the effects of a county's decisions during COVID-19
+                        has not immediately caused a difference in the economics of the county. Consequently, it is possible that an analysis later in time could prove more fruitful")
                     ),
                     mainPanel(
                       h3("Vaccination and Sales %"),
@@ -226,9 +228,16 @@ server <- function(input, output) {
   output$pop_pop_plot <- renderPlot(getPopPieChart(unified_df, input$pop_input_bucket, input$pop_input_year, input$pop_input_quarter));
   output$pop_vac_plot <- renderPlot(getVaccinationPieChart(unified_df, input$pop_input_bucket, input$pop_input_year, input$pop_input_quarter));
   output$pop_sales_plot <- renderPlot(getSalesPieChart(unified_df, input$pop_input_bucket, input$pop_input_year, input$pop_input_quarter));
+<<<<<<< Updated upstream
   output$vax_plot <- renderPlot(ggplot(df, aes(color = factor(year_num))) + geom_point(aes(x = Series_Complete_Pop_Pct, y = Sales))+
   facet_grid(.~quarter_num, scales = "fixed")+labs(x = "Complete Vaccination Percentage", y = "Income")+
   scale_color_discrete(name = "Year"));
+=======
+  
+  output$vax_plot <- renderPlotly({
+    get_scatterplot(input$vax_input_year, input$vax_input_quarter)
+  })
+>>>>>>> Stashed changes
 }
   
 shinyApp(ui = ui, server = server)
