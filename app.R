@@ -182,6 +182,7 @@ ui <- fluidPage(
                 ),
              ),
              tabPanel("Conclusion",
+                  mainPanel(
                       h2("The Economic/Social Impact of COVID-19"),
                       br(),
                       p(),
@@ -189,12 +190,21 @@ ui <- fluidPage(
                         into how we should deal with future pandemics/epidemics. As of right now, the U.S. is going through an economic downturn with
                         rising inflation rates partially due to the repercussions of COVID-19. During the pandemic, many witnessed panic buying/saving,
                         widespread isolation policies, working-from-home policies, etc. for the first time, and in consideration of these events,
-                        many politicians struggled with balancing the economy with the prevention of COVID-19. Our analysis may provide a good
-                        starting point for research into how events spawning from a pandemic can affect our economy and, consequently, help lawmakers
-                        make more educated choices in the policies to deal with disease outbreaks like COVID-19.")
-             
+                        many politicians struggled with balancing the economy with the prevention of COVID-19."),
+                      p("We observed that the pandemic had a negative affect on the economy of Washington State but what was interesting was that
+                        COVID vaccination rates had little impact on recovering areas, counties that had a lower vaccination percentage experienced
+                        levels of economic recovery similar to that of a county with a higher vaccination rate would have."),
+                      h4("In conclusion, the pandemic has had a negative impact on economies in Washington state but the severity of the effects has not differed between counties due to vaccination rates"),
+                  ),
+                  sidebarPanel(
+                    h2("Data Sources"),
+                    h3("Vaccination Rates by County in the U.S.:"),
+                    p("https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh"),
+                    h3("Local Retail Revenues by City (Washington):"),
+                    p("https://apps.dor.wa.gov/ResearchStats/Content/\nTaxableRetailSalesLocal/Report.aspx")
+                  ),
              ),
-            
+
   )
 )
 
