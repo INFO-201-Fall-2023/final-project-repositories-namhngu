@@ -49,5 +49,3 @@ plot_perc_diff <- function(county) {
   return(plotly)
 }
 
-print(plot_perc_diff("Adams County"))
-
