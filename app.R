@@ -9,6 +9,7 @@ library(shinydashboard)
 unified_df <- read.csv("unifiedCounties.csv")
 source("GetPercDiff.R")
 source("pieCharts.R")
+options(scipen = 999)
 
 ui <- fluidPage(
   theme = shinytheme("sandstone"),
@@ -33,7 +34,7 @@ ui <- fluidPage(
   ),
   navbarPage("",
              tabPanel("Introduction",
-              h2("The Impact of COVID-19 Vaccinations on Local Retail Sales in Washington State"),
+              h2("The Economic/Social Impact of COVID-19"),
               br(),
               p("The severity of COVID-19 continues to be a debated topic. Many right-wing activists and politicians have 
                 claimed the gravity of the pandemic is overblown and that mandatory vaccinations, masking, and “stay-at-home” 
@@ -52,20 +53,24 @@ ui <- fluidPage(
                 avoiding COVID-19 vs. ignoring COVID-19, affected the saless of local businesses? Does it make a difference in the economic
                 recovery of businesses? In our analysis, we hope to answer such questions."),
               p("Our group localized our observations to local retailers in Washington state where we will observe the trend of saless per
-                city. Using data about local retail sales from 2015 to 2022, we can observe how sales were affected by social isolation during
+                city. Using data about local retail sales from 2017 to 2022, we can observe how sales were affected by social isolation during
                 2020 in comparison to the years prior and how the businesses recovered during 2021 and 2022. Because there isn’t necessarily a
                 way to rank cities by their “reigning ideologies about COVID-19”, we have decided to organize cities by their county’s percentage
                 of vaccinated citizens as vaccination rates are correlated with a population’s sentiment about the severity of COVID-19. By
                 organizing cities by vaccination rate, we can observe how higher vaccination rates in some cities have affected the percentage
                 increase/decrease in local retailer sales over the prior, during, and post-COVID periods. This, consequently, will answer
-                questions about how differing ideologies on how to deal with COVID-19 have affected the saless of local businesses."),
-              p("Answering questions about the economic impact of COVID-19 on local business sales is important as it may provide insight
-                into how we should deal with future pandemics/epidemics. As of right now, the U.S. is going through an economic downturn with
-                rising inflation rates partially due to the repercussions of COVID-19. During the pandemic, many witnessed panic buying/saving,
-                widespread isolation policies, working-from-home policies, etc. for the first time, and in consideration of these events,
-                many politicians struggled with balancing the economy with the prevention of COVID-19. Our analysis may provide a good
-                starting point for research into how events spawning from a pandemic can affect our economy and, consequently, help lawmakers
-                make more educated choices in the policies to deal with disease outbreaks like COVID-19."),
+                questions about how differing ideologies on how to deal with COVID-19 have affected the sales of local businesses."),
+              p("We specifically looked at vaccination data from the CDC: \"COVID-19 Vaccinations in the United States,County\"
+                .The Centers for Disease Control and Prevention collected this 
+                data through the use of vaccination providers that partnered with the CDC: jurisdictional partner clinics, retail pharmacies, 
+                long-term care facilities, dialysis centers, Federal Emergency Management Agency and Health Resources and Services Administration 
+                partner sites, and federal entity facilities. Submissions made by these partners contain data about the dose number, manufacturer, 
+                date administered and recipient ID of the people receiving vaccines which were then organized by county. We took special notice of the series completed
+                columns which indicated percentage/number of population who have completed the primary series of vaccinations for COVID-19. We also
+                took census population information from this to get an idea of the population of each county. In addition to the data from the CDC, 
+                we looked at revenue data from Washington State Department of Revenue: \"Taxable Retail Sales\". The Department of Revenue of Washington State collects 
+                data through tax returns where businesses are supposed to list their sales and type of store. After grouping counties together in this dataset, we
+                joined the two datasets together on yearly quarters and counties to find and observe relationships between trend of sales and how vaccinations/COVID-19 weariness could play into that.")
              ),
              tabPanel("Sales Patterns",
                 br(),
@@ -89,7 +94,8 @@ ui <- fluidPage(
                       since pre pandemic to the tail end of the pandemic. Overall the pandemic has had a negative impact on the economies in Washington 
                       state but by how much? We hope to investigate how different areas of Washington have been impacted in relation to the other areas. On this page, you will
                       be able to see how different Washington State counties performed before, during, and after the pandemic in relation to their mean economic performance. In addition, for a holistic
-                      view, you are able to see the sum of all county revenues throughout the quarters.")
+                      view, you are able to see the sum of all county revenues throughout the quarters. From this view, we can see most counties did not make as much sales as the usually do during 2020Q1 and
+                      2020Q2, indicating a noticeable economic impact from COVID-19. Looking at total revenue chart of counties like King County, we can see that the change in total revenue was was a couple million dollars worth.")
                     ),
                     mainPanel(
                       h3("Change in Sales Over Time"),
@@ -144,14 +150,25 @@ ui <- fluidPage(
                     
                     br(),
                     radioButtons("pop_input_year", 
-                                 "Select a year:", 
+                                 "Select a year*:", 
                                  choices = unique(unified_df$year_num)),
                     br(),
                     radioButtons("pop_input_quarter", 
                                  "Select a quarter:", 
                                  choices = unique(unified_df$quarter_num)),
                     br(),
-                    p("Notice that vaccines weren't developed until 2021.")
+                    p("*Notice that vaccines weren't developed until 2021 and our data only reaches 2022Q3."),
+                    br(),
+                    br(),
+                    p("These charts look at population of counties in relation to vaccination numbers and revenue. 
+                      The counties are split up into buckets of population to see how population is possiblly correlated with 
+                      factors of revenue and vaccination numbers. From this we can see how other factors such as population
+                      may factor into the cause of certain economic patterns. For example, we observed that highly populated counties: \"2,200,000 <= Pop. < 2,300,000\"
+                      were often correlated with a larger proportion of vaccinated peoples and larger proportion of revenue in comparison to all other counties. Areas with larger
+                      populations usually have more tourists as more people means more attractions and shops. This means during the isolation-period these areas would be more heavily 
+                      hit economically. This shows how COVID-19 weariness isn't neccessarily the only thing driving the economic downturns in 2020Q1 and 2020Q2 as tourism/population
+                      can have an effect too. From this analysis, we realized that the COVID-19 economic trends is much more nuanced.")
+                    
                   ),
                   mainPanel(
                     h3("Population, Vaccination, Sales"),
@@ -163,7 +180,17 @@ ui <- fluidPage(
                   )
                 ),
              ),
-             tabPanel("Conclusion"
+             tabPanel("Conclusion",
+                      h2("The Economic/Social Impact of COVID-19"),
+                      br(),
+                      p(),
+                      p("Answering questions about the economic impact of COVID-19 on local business sales is important as it may provide insight
+                        into how we should deal with future pandemics/epidemics. As of right now, the U.S. is going through an economic downturn with
+                        rising inflation rates partially due to the repercussions of COVID-19. During the pandemic, many witnessed panic buying/saving,
+                        widespread isolation policies, working-from-home policies, etc. for the first time, and in consideration of these events,
+                        many politicians struggled with balancing the economy with the prevention of COVID-19. Our analysis may provide a good
+                        starting point for research into how events spawning from a pandemic can affect our economy and, consequently, help lawmakers
+                        make more educated choices in the policies to deal with disease outbreaks like COVID-19.")
              
              ),
             
