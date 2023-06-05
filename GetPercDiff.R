@@ -13,7 +13,7 @@ counties_df <- read.csv("unifiedCounties.csv")
 revenue <- summarise(group_by(counties_df, year_num, quarter_num), Total_Sales = sum(Sales))
 revenue$quarter <- factor(paste(revenue$year_num, "Q", revenue$quarter_num, sep = ""))
 
-get_revenue_graph <- function() {
+get_sales_graph <- function() {
   barplot <- ggplot(data = revenue, aes(x = quarter, y = Total_Sales, tooltip = Total_Sales)) + 
     geom_bar(stat = "identity", fill = "steelblue") +
     labs(x = "Fiscal Quarter", y = "Total Revenue", title = "Total Revenue Every Fiscal Quarter")
