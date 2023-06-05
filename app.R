@@ -85,11 +85,15 @@ ui <- fluidPage(
                       br(),
                     ),
                     mainPanel(
-    
                       h3("Change in Revenue Over Time"),
                       plotlyOutput(outputId = "rev_plot")
                     )
                 ),
+                p("COVID 19 has had an undeniable influence on state and regional economies, this story will look at the big picture and see how COVID vaccination rates 
+                vs. business performance has changed since pre pandemic to the tail end of the pandemic. Overall the pandemic has had a negative impact on the economies in Washington 
+                state but by how much? We hope to investigate how different areas of Washington have been impacted in relation to the other areas of Washington. On this page, you will
+                be able to see how different Washington State counties performed before, during, and after the pandemic in relation to their mean performance. In addition for a holistic
+                view, you are able to see the sum of all county revenues throughout the quarters."),
              ),
              tabPanel("Correlation of Vaccinations and Revenue",
                   br(),
